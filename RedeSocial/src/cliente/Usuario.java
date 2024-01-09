@@ -6,18 +6,28 @@ import java.util.Scanner;
 public class Usuario {
 	private String nome;
 	private String email;
-	private String nacionalidade;
+	private String senha;
 	private ArrayList<String> postagens;
-	private int quantidadePostagens;
-	private int pontuacao;
-	
-	
-	
-	
+
 	public Usuario() {
 		super();
 		postagens = new ArrayList<String>();
 	}
+	
+	public Usuario(String nome, String email) {
+		super();
+		this.nome = nome;
+		this.email = email;
+	}
+	
+
+	public Usuario(String nome, String email, String senha) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -30,32 +40,27 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getNacionalidade() {
-		return nacionalidade;
+	
+	public String getSenha() {
+		return senha;
 	}
-	public void setNacionalidade(String nacionalidade) {
-		this.nacionalidade = nacionalidade;
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
+
 	public void setPostagens(ArrayList<String> postagens) {
 		this.postagens = postagens;
 	}
 	public ArrayList<String> getPostagens() {
 		return postagens;
 	}
-	public int getQuantidadePostagens() {
-		return quantidadePostagens;
-	}
-	public int getPontuacao() {
-		return pontuacao;
-	}
+
 	public void addPostagens(String postagens) {
 		this.postagens.add(postagens);
 	}
 	
-	public void alteraPontuacao(int pontuacao) {
-		this.pontuacao+=pontuacao;
-		if(this.pontuacao < 0) this.pontuacao = 0;
-	}
+
 	public void listarPostagens() {
 		for(int i = 0; i<postagens.size();i++) {
 			System.out.println(postagens.get(i));
@@ -65,7 +70,7 @@ public class Usuario {
 	
 	public static void main(String[] args) {
 		
-		String sn = "s", nome, email, nacionalidade;
+		String sn = "s", nome, email, senha; ;
 		
 		do {
 		Scanner sc = new Scanner(System.in);
@@ -75,11 +80,10 @@ public class Usuario {
 		nome = sc.nextLine();
 		System.out.println("Digite seu email");
 		email = sc.nextLine();
-		System.out.println("Digite seu nacionalidade");
-		nacionalidade = sc.nextLine();
+		System.out.println("Digite sua senha");
+		senha = sc.nextLine();
 		usuario.setNome(nome);
 		usuario.setEmail(email);
-		usuario.setNacionalidade(nacionalidade);
 		
 		System.out.println("Cadastrar outro Usuario");
 		sn = sc.nextLine();

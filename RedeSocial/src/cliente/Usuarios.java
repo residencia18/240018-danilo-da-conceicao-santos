@@ -38,5 +38,30 @@ public class Usuarios {
 			System.out.println(usuarios.getUsuarios().get(i).getEmail());
 		}	
 	}
-
+	public void listarUsuarios() {
+		for(int i = 0; i<usuarios.size();i++) {
+			usuarios.get(i).getNome();
+			usuarios.get(i).getEmail();
+		}
+	}
+	public void removerUsuario() {
+		for(int i = 0; i<usuarios.size();i++) {
+			usuarios.remove(i);
+		}
+	}
+	
+	public void buscarUsuario(ArrayList<Usuario> usuarios) {
+		String nome;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Digite o nome do usuario");
+		nome = sc.nextLine();
+		
+		for(int i = 0; i<usuarios.size();i++) {
+			if(usuarios.get(i).getNome().equals(nome)) {
+				System.out.println(usuarios.get(i).getNome());
+				System.out.println(usuarios.get(i).getEmail());
+			}
+		}
+	}
+	
 }

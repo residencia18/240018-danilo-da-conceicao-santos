@@ -7,10 +7,10 @@ import java.util.Scanner;
 public class ArquivoTextoAbrir {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         System.out.print("Digite o nome do arquivo: ");
-        String nomeArquivo = scanner.nextLine();
+        String nomeArquivo = sc.nextLine();
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo));
@@ -25,9 +25,9 @@ public class ArquivoTextoAbrir {
             reader.close();
         } catch (IOException e) {
             System.err.println("Erro ao ler o arquivo: " + e.getMessage());
-        } finally {
-            scanner.close();
         }
+  
+        
     }
 }
 

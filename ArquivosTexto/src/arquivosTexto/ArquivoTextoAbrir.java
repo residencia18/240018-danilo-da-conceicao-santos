@@ -12,17 +12,14 @@ public class ArquivoTextoAbrir {
         System.out.print("Digite o nome do arquivo: ");
         String nomeArquivo = sc.nextLine();
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo));
-
-            System.out.println("Conteúdo do arquivo:");
-
+        try( BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
+       
+            System.out.println("Conteudo do arquivo:");
             String linha;
             while ((linha = reader.readLine()) != null) {
                 System.out.println(linha);
             }
 
-            reader.close();
         } catch (IOException e) {
             System.err.println("Erro ao ler o arquivo: " + e.getMessage());
         }

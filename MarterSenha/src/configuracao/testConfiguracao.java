@@ -17,7 +17,7 @@ class testConfiguracao {
 	senha = null;
 	
 	try {
-		configuracao.setAlfabeto(null);
+		configuracao.setAlfabeto(senha);
 	}catch(Exception e) {
 		assertEquals("O alfabeto deve possuir mais de 1 caracter", e.getMessage());
 	}

@@ -20,7 +20,7 @@ public class Configuracao {
 	}
 		
 }
-
+	
 //			for (int i = 0; i < alfabeto.length(); i++) {
 //				
 //				for (int j = i+1; j < alfabeto.length(); j++) {

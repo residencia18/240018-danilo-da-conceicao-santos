@@ -7,15 +7,27 @@ import org.junit.jupiter.api.Test;
 class testConfiguracao {
 
 	@Test
-	void testSetAlfabeto() {
+	void testSetAlfabeto() throws Exception{
 		Configuracao configuracao = new Configuracao();
-		String senha = "ABCDEFGHIJ";
+		String senha = "ACDEFGHIJ";
 		configuracao.setAlfabeto(senha);
 		assertEquals(senha,configuracao.getAlfabeto());
 	
+		
 	//***********caso 1 : tentar enserir uma Senha null
+	
 	senha = null;
 	
+	try {
+		configuracao.setAlfabeto(senha);
+	}catch(Exception e) {
+		assertEquals("O alfabeto deve ser nullo", e.getMessage());
+	}
+	assertFalse(configuracao.getAlfabeto()==null);
+			
+	//***********caso 2 : tentar enserir uma Senha 1 caracter
+	
+	senha = "A";
 	try {
 		configuracao.setAlfabeto(senha);
 	}catch(Exception e) {
@@ -24,4 +36,5 @@ class testConfiguracao {
 	assertFalse(configuracao.getAlfabeto()==null);
 	
 	}
+	
 }

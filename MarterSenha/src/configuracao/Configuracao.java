@@ -1,7 +1,10 @@
 package configuracao;
 
 public class Configuracao {
+	private String nome;
 	private String alfabeto;
+	private int tamanhoSenha;
+	private int maximoTentativas;
 
 	public String getAlfabeto() {
 		return alfabeto;
@@ -26,7 +29,33 @@ public class Configuracao {
 		    }
 		}
 	}
-		
+	 public void setTamanhoSenha(int tamanho) throws Exception {
+	        if (tamanho <= 0) {
+	            throw new Exception("Senha deve ter ao menos 1 caracter");
+	        } else if (tamanho > 4) {
+		        throw new Exception("Senha deve ter no máximo 4 caracteres");
+	        } 
+	        
+	        this.tamanhoSenha = tamanho;
+	    }
+	 
+	public int getTamanhoSenha() {
+		return tamanhoSenha;
+	}
+	public int getMaximoTentativas() {
+		return maximoTentativas;
+	}
+	public void setMaximoTentativas(int maximoTentativas)throws Exception{
+		if(maximoTentativas <= 0) {
+			   throw new Exception("Tentativas deve ter pelo menos 1");
+		}
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 }
 	
 //			for (int i = 0; i < alfabeto.length(); i++) {

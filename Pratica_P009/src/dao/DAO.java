@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DAO {
-		private static final String URL = "jdbc:mysql://localhost:3306/";
-		private static final String USER = "root";
-		private static final String PASSWORD = "";
+		private static final String URL = "jdbc:mysql://uxmohzcrtdbgkvbq:f3VqVHMXWPTTrsGBuhs1@b8lufxsoytqjuufdkzii-mysql.services.clever-cloud.com:3306/b8lufxsoytqjuufdkzii";
+		private static final String USER = "uxmohzcrtdbgkvbq";
+		private static final String PASSWORD = "f3VqVHMXWPTTrsGBuhs1";
 		
 		public static Connection conectar() {
 			Connection con = null;

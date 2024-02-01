@@ -15,7 +15,7 @@ public class ImovelDAO {
 		
 		
 		
-		String query = "INSERT INTO Imovel (matricula, endereco, ultimaLeitura, penultimaLeitura) VALUES (?, ?, ?, ?,?)";
+		String query = "INSERT INTO Imovel (matricula, endereco, ultimaLeitura, penultimaLeitura, cliente) VALUES (?, ?, ?, ?, ?)";
 		try(PreparedStatement stmt = con.prepareStatement(query)) {
 			stmt.setString(1, imovel.getMatricula());
 			stmt.setString(2, imovel.getEndereco());
@@ -77,5 +77,36 @@ public class ImovelDAO {
 			System.out.println("Erro ao adicionar " + e);
 		}
 		return null;
+	}
+	public static boolean update(Imovel imovel) {
+		DAO dao = new DAO();
+		Connection con = dao.conectar();
+		String query = "UPDATE Imovel SET matricula = ?, endereco = ?, ultimaLeitura = ?, penultimaLeitura = ? WHERE matricula = ?";
+		
+		try(PreparedStatement stmt = con.prepareStatement(query)) {
+			stmt.setString(1, imovel.getMatricula());
+			stmt.setString(2, imovel.getEndereco());
+			stmt.setFloat(3, imovel.getUltimaLeitura());
+			stmt.setFloat(4, imovel.getPenultimaLeitura());
+			stmt.setString(5, imovel.getMatricula());
+			stmt.execute();
+		}catch (SQLException e) {
+			System.out.println("Erro ao adicionar " + e);
+		}
+		return false;	
+	}
+	public static boolean delete(String matricula) {
+		try {
+			DAO dao = new DAO();
+			Connection con = dao.conectar();
+			String query = "DELETE FROM Imovel WHERE matricula = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, matricula);
+			stmt.execute();
+			return true;
+		}catch (SQLException e) {
+			System.out.println("Erro ao adicionar " + e);
+		}
+		return false;
 	}
 }

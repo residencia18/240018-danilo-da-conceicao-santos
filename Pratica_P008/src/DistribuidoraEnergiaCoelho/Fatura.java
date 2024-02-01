@@ -27,11 +27,11 @@ public class Fatura {
 		return id;
 	}
 	
-	/*
+	
 	public void setId(String id) {
 		this.id = id;
 	}
-	*/
+	
 	
 	public LocalDate getData() {
 		return data;

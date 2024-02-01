@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +28,11 @@ public class Fatura {
 		return id;
 	}
 	
-	/*
+	
 	public void setId(String id) {
 		this.id = id;
 	}
-	*/
+	
 	
 	public LocalDate getData() {
 		return data;
@@ -72,7 +73,9 @@ public class Fatura {
 	public void setEstadoPagamento(boolean estadoPagamento) {
 		this.estadoPagamento = estadoPagamento;
 	}
-	
+	public boolean getEstadoPagamento() {
+		return estadoPagamento;
+	}
 //	public List<Pagamento> getPagamentos() {
 //		return pagamentos;
 //	}

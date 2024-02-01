@@ -8,7 +8,7 @@ public class Imovel {
 	private String endereco;
 	private float ultimaLeitura;
 	private float penultimaLeitura;
-	private Integer IdCliente;
+	private Integer IdCliente = 0;
 //	private List<Fatura> listaFaturas = new ArrayList<Fatura>();
 //	private List<Falha> listaFalhas = new ArrayList<Falha>();
 	

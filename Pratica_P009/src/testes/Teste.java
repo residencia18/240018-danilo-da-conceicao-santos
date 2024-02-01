@@ -13,7 +13,8 @@ public class Teste {
 		//System.out.println(ClienteDAO.readById("1").getNome());		
 		//ClienteDAO.update(cliente);
 	
-		Imovel imovel = new Imovel("123456","RuA A",155,1235);
+		Imovel imovel = new Imovel("1232346","Rua A",223238,5987);
+		imovel.setIdCliente(1);
 		ImovelDAO.create(imovel);
 		
 	}

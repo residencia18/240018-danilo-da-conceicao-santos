@@ -42,4 +42,9 @@ public class Pagamento {
 	public void setReembolso(Reembolso reembolso) {
 		this.reembolso = reembolso;
 	}
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

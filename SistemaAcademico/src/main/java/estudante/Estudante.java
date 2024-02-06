@@ -6,6 +6,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Persistence;
 
 @Entity
@@ -15,14 +17,22 @@ public class Estudante {
 	private Integer id;
 	private String nome;
 	private String email;
-	private String matricula;
-	public Estudante(Integer id, String nome, String email, String matricula) {
+	private String matricula;	
+	@ManyToOne
+	@JoinColumn(name="codCurso")
+	private Curso curso;
+	
+	
+	
+	public Estudante(Integer id, String nome, String email, String matricula, Curso curso) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.matricula = matricula;
+		this.curso = curso;
 	}
+
 	public Estudante() {
 		super();
 	}
@@ -92,14 +102,14 @@ public class Estudante {
 //		emf.close();
 		
 ////Update////
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("unit_academico");
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		Estudante estudante = em.find(Estudante.class, 2);
-		estudante.setNome("Chico");
-		em.getTransaction().commit();
-		em.close();
-		emf.close();
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("unit_academico");
+//		EntityManager em = emf.createEntityManager();
+//		em.getTransaction().begin();
+//		Estudante estudante = em.find(Estudante.class, 2);
+//		estudante.setNome("Chico");
+//		em.getTransaction().commit();
+//		em.close();
+//		emf.close();
 	}
 	
 	

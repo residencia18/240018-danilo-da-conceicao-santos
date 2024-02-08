@@ -1,10 +1,12 @@
 package dao;
 
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import model.Cliente;
 import model.Imovel;
@@ -16,7 +18,7 @@ public class CoelhoDAO {
       
     }
 	
-	 public void menuCoelho() {
+	 public void menuCoelho() throws InterruptedException {
 	    	
 	    	String acao = "";
 	    	Scanner sc = new Scanner(System.in);
@@ -84,7 +86,7 @@ public class CoelhoDAO {
 		
 	}
 
-	 public void menuCliente() {
+	 public void menuCliente() throws InterruptedException {
 	    	String acao = "";
 	    	Scanner sc = new Scanner(System.in);
 	    	 while (!acao.equals("0")) {
@@ -111,7 +113,9 @@ public class CoelhoDAO {
 	            	break;
 	            	
 	        	case "2":
-	        	//	consultarCliente();
+
+	        		consultarCliente(entityManager);
+
 	            	break;
 	            	
 	        	case "3":
@@ -179,4 +183,14 @@ public class CoelhoDAO {
 	            System.out.println("Erro ao cadastrar cliente: " + e.getMessage());
 	        }
 	    }
+	 
+	 public void consultarCliente(EntityManager em) throws InterruptedException {
+		    String jpql = "select cliente from Cliente cliente"; // Usando o alias "cliente"
+		    TypedQuery<Cliente> typedQuery = em.createQuery(jpql, Cliente.class);
+		    List<Cliente> clientes = typedQuery.getResultList();
+		    for (Cliente cliente : clientes) {	    	
+		        System.out.println(cliente);	       
+		    } 		   
+		}
+
 }

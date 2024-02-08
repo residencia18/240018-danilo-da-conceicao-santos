@@ -14,9 +14,8 @@ public class Cliente {
 	private String cpf;
 
 	
-	public Cliente(Integer id, String nome, String cpf) {
+	public Cliente(String nome, String cpf) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 	}
@@ -25,12 +24,13 @@ public class Cliente {
 		super();
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	public Integer getId() {
+        return id;
+    }
+
+	public void setId(Integer id) {
+        this.id = id;
+    }
 	
 	public String getNome() {
 		return nome;

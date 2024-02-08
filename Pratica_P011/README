@@ -195,7 +195,26 @@ Suporte a middlewares.
 Grande comunidade e muitos plugins disponíveis.
 Ótimo para projetos JavaScript/Node.js que necessitam de uma abordagem ágil para APIs
 
+### Questao 8-
 
+Sim, uma aplicação desenvolvida com Spring Boot pode ser o back-end de aplicações front-end desenvolvidas em outras plataformas que não sejam Java.
 
+1. Integração entre Back-End e Front-End:
+    O back-end é responsável por processar lógica de negócios, acessar bancos de dados, autenticar usuários e fornecer dados para o front-end.
+    O front-end, por outro lado, lida com a interface do usuário, exibindo informações e interagindo com os usuários.
+    A comunicação entre o back-end e o front-end ocorre por meio de APIs (Application Programming Interfaces).
+2. Spring Boot como Back-End:
+    O Spring Boot é um framework Java que simplifica o desenvolvimento de aplicativos back-end.
+    Ele oferece recursos como injeção de dependência, segurança, gerenciamento de transações e suporte a APIs RESTful.
+    O Spring Boot é altamente flexível e pode ser usado como back-end para qualquer aplicativo front-end, independentemente da linguagem ou plataforma.
+3. Integração com Front-Ends Diversos:
+    Você pode criar um aplicativo front-end usando tecnologias como React, Angular, Vue.js, Swift, Kotlin, JavaScript puro, entre outras.
+    Esses aplicativos front-end podem fazer solicitações HTTP para o back-end, consumindo dados e serviços fornecidos pelas APIs.
+    O Spring Boot expõe endpoints RESTful que podem ser acessados por qualquer cliente, independentemente da tecnologia usada no front-end.
+4. Protocolo HTTPS:
+    O HTTPS (Hypertext Transfer Protocol Secure) é um protocolo de comunicação seguro usado para transferir dados pela internet.
+    Ele fornece criptografia e autenticação, protegendo as informações transmitidas entre o cliente (navegador/front-end) e o servidor (back-end).
+    A relação entre o Spring Boot e o HTTPS está na configuração do servidor. Você pode habilitar o HTTPS no seu aplicativo Spring Boot usando um certificado SSL/TLS.
+    Isso garante que as comunicações entre o front-end e o back-end sejam seguras e confidenciais.
 
 

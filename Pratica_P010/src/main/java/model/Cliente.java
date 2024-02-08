@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Cliente {
@@ -13,11 +14,27 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 
+	@ManyToOne
+	private Imovel imovel;
 	
-	public Cliente(String nome, String cpf) {
-		super();
+
+	public Cliente(String nome, String cpf, Imovel imovel) {
 		this.nome = nome;
-		this.cpf = cpf;
+		if (validarCPF(cpf)) {
+            this.cpf = cpf;
+        } else {
+            System.out.println("CPF inválido. Não foi possível atribuir ao cliente.");
+        }
+		this.imovel = imovel;
+	}
+
+	public Cliente(String nome, String cpf) {
+		this.nome = nome;
+		if (validarCPF(cpf)) {
+            this.cpf = cpf;
+        } else {
+            System.out.println("CPF inválido. Não foi possível atribuir ao cliente.");
+        }
 	}
 	
 	public Cliente() {
@@ -32,6 +49,15 @@ public class Cliente {
         this.id = id;
     }
 	
+	
+	public Imovel getImovel() {
+		return imovel;
+	}
+
+	public void setImovel(Imovel imovel) {
+		this.imovel = imovel;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -48,6 +74,13 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + "]";
+	}
+
+	public static boolean validarCPF(String cpf2) {
+		if(cpf2.length() > 11) {
+			return false;
+		}
+		return true;
 	}
 	
 	

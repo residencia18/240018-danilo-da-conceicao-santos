@@ -99,7 +99,7 @@ public class TesteDAO {
 		
 		Curso c = typedquery.getSingleResult();
 		
-		String jpqlEstudante = "select e from Estudante e" + " e where e.curso = :curso";
+		String jpqlEstudante = "select e from Estudante e where e.curso = :curso";
 		
 		TypedQuery<Estudante> typedqueryEstudante = em.createQuery(jpqlEstudante, Estudante.class);
 		typedqueryEstudante.setParameter("curso", c);

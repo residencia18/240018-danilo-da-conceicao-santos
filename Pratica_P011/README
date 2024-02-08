@@ -1,0 +1,58 @@
+# Pratica_P011
+
+### Questao 1- O Model-View-Controller (MVC) é um padrão de arquitetura de software que visa organizar o código de uma aplicação de forma mais modular e eficiente. Ele divide as responsabilidades em três componentes principais:
+
+* Model (Modelo):
+O Model é o coração da aplicação. Ele lida com a lógica de negócios, as regras de validação e a interação com o banco de dados.
+Aqui, definimos as entidades (como objetos ou tabelas) e suas relações.
+O Model não tem conhecimento da camada de apresentação (View) nem da camada de controle (Controller).
+É onde a regra de negócio é implementada.
+* View (Visão):
+A View é responsável pela interface de comunicação com o usuário.
+Ela renderiza os dados para o usuário, seja em uma aplicação desktop ou web.
+A View não possui lógica de negócios; seu papel é apenas exibir informações.
+Ela pode ser uma página HTML, uma tela de aplicativo ou qualquer outra forma de apresentação visual.
+* Controller (Controlador):
+O Controller atua como o intermediário entre o Model e a View.
+Ele controla o fluxo da aplicação, recebendo as requisições do usuário e decidindo como os dados devem ser processados e exibidos.
+Quando uma requisição chega, o Controller decide qual Model deve ser consultado e qual View deve ser atualizada.
+É a primeira camada que recebe a requisição dentro do padrão MVC.
+Como eles interagem:
+
+O usuário faz uma requisição HTTP (por exemplo, acessando uma página da web).
+A requisição chega ao Controller, que decide qual Model deve ser consultado.
+O Model realiza a consulta ao banco de dados e retorna os dados requisitados.
+O Controller recebe os dados do Model e decide qual View deve ser atualizada.
+A View renderiza a resposta e a envia de volta ao usuário.
+Em resumo, o MVC cria uma separação clara entre as camadas de dados, apresentação e controle, tornando o código mais organizado, flexível e testável. Cada componente desempenha um papel fundamental na estrutura da aplicação
+
+### Questao 2- O padrão Model-View-Controller (MVC) oferece várias vantagens ao desenvolvimento de aplicações web. Vamos explorar algumas delas:
+
+* eparação de Responsabilidades:
+O MVC divide a aplicação em três componentes distintos: Model, View e Controller.
+Cada componente tem uma função específica, o que facilita a manutenção e a evolução do código.
+Por exemplo, se você precisa atualizar a interface do usuário (View), pode fazê-lo sem afetar o modelo de dados ou a lógica de negócios.
+* Reutilização de Código:
+A separação clara entre as camadas permite reutilizar componentes em diferentes partes da aplicação.
+Por exemplo, o mesmo Model pode ser usado em várias Views diferentes, como uma versão web e um aplicativo móvel.
+* Facilidade de Testes:
+Como cada componente é independente, é mais fácil testar individualmente.
+Você pode criar testes unitários para o Model, testes de interface para a View e testes de integração para o Controller.
+* Manutenção Simplificada:
+Quando há uma falha ou uma mudança necessária, você sabe exatamente onde procurar.
+Por exemplo, se houver um erro na lógica de negócios, você verifica o Model; se for um problema de exibição, olha para a View.
+* Escalabilidade:
+O MVC permite que diferentes equipes trabalhem em paralelo em diferentes partes da aplicação.
+Por exemplo, uma equipe pode se concentrar na lógica de negócios enquanto outra trabalha na interface do usuário.
+Aqui estão alguns exemplos de situações em que a separação de responsabilidades do MVC é benéfica:
+
+* Aplicação Web com Múltiplas Interfaces:
+Imagine uma aplicação que precisa funcionar tanto em navegadores web quanto em dispositivos móveis.
+O MVC permite que você reutilize o mesmo Model e lógica de negócios, mas crie Views diferentes para cada plataforma.
+* Manutenção de um Sistema Legado:
+Se você herda um sistema legado, o MVC facilita a identificação e correção de problemas.
+Você pode atualizar a View sem mexer no Model existente.
+* Desenvolvimento Colaborativo:
+Quando várias pessoas trabalham no mesmo projeto, o MVC ajuda a evitar conflitos.
+Cada equipe pode se concentrar em sua área de especialização (Model, View ou Controller).
+Em resumo, o padrão MVC oferece uma estrutura organizada para o desenvolvimento de aplicações web, promovendo a modularidade, a reutilização e a manutenção eficiente.

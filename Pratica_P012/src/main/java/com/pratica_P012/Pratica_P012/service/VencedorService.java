@@ -22,7 +22,7 @@ public class VencedorService {
         try {
             InputStream inputStream = getClass().getResourceAsStream("/csv/pilotos.csv");
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            // Ignorar a primeira linha (cabeçalho)
+        
             reader.readLine();
             String linha;
             while ((linha = reader.readLine()) != null) {

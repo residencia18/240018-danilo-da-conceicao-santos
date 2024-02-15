@@ -22,7 +22,7 @@ public class VencedorService {
         try {
             InputStream inputStream = getClass().getResourceAsStream("/csv/pilotos.csv");
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        
+            // Ignorar a primeira linha (cabeçalho)
             reader.readLine();
             String linha;
             while ((linha = reader.readLine()) != null) {
@@ -39,4 +39,23 @@ public class VencedorService {
     public List<Vencedor> listarTodosVencedores() {
         return vencedores;
     }
-}   
+
+    public List<Vencedor> listarVencedoresBrasileiros() {
+        List<Vencedor> vencedoresBrasileiros = new ArrayList<>();
+        for (Vencedor vencedor : vencedores) {
+            if (vencedor.getPais().equalsIgnoreCase("Brasil")) {
+                vencedoresBrasileiros.add(vencedor);
+            }
+        }
+        return vencedoresBrasileiros;
+    }
+
+    public List<Vencedor> listarTop5Vencedores() {
+        vencedores.sort((a, b) -> b.getVitorias() - a.getVitorias());
+        return vencedores.subList(0, Math.min(vencedores.size(), 5));
+    }
+    public List<Vencedor> listarTop10Vencedores() {
+        vencedores.sort((a, b) -> b.getVitorias() - a.getVitorias());
+        return vencedores.subList(0, Math.min(vencedores.size(), 10));
+    }
+}

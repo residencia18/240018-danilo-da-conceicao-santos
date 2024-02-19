@@ -1,4 +1,4 @@
-package com.degasoft.redesocial.modelo;
+package com.aviacao.airdegas.Aviacao.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,20 +6,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Usuario {
+public class Piloto {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private String email;
-	private String senha;
-	
-	public Usuario(String nome, String email, String senha) {
+	private String numbreve;
+	public Piloto(String nome, String numBreve) {
 		super();
 		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
+		this.numbreve = numBreve;
 	}
-	public Usuario() {
+	public Piloto() {
 		super();
 	}
 	public Long getId() {
@@ -34,21 +31,15 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getEmail() {
-		return email;
+	public String getNumBreve() {
+		return numbreve;
 	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setNumBreve(String numBreve) {
+		this.numbreve = numBreve;
 	}
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
+		return "Piloto [id=" + id + ", nome=" + nome + ", numBreve=" + numbreve + "]";
 	}
 	
 	

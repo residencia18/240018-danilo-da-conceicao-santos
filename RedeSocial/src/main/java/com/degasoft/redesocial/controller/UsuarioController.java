@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,14 +14,25 @@ import com.degasoft.redesocial.repository.UsuarioRepository;
 
 
 @RestController
+@RequestMapping("/usuario/")
 public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
 	
-	@RequestMapping("/listarUsuarios")
-	public ArrayList<UsuarioDTO> listarUsuarios() {
-		List<Usuario> lista = (ArrayList<Usuario>) usuarioRepository.findAll();
+
+	@GetMapping
+	public ArrayList<UsuarioDTO> listarUsuarios(String name) {
+		System.out.println(name);
+		List<Usuario> lista;
+		if(name != null) {
+			lista = (ArrayList<Usuario>) usuarioRepository.findByNome( name);			
+		}
+		else {		
+			lista = (ArrayList<Usuario>) usuarioRepository.findAll();
+		}
+		
+		
 		ArrayList<UsuarioDTO> listaDTO = new ArrayList<UsuarioDTO>();
 		for(Usuario u : lista) {
 			UsuarioDTO uDTO = new UsuarioDTO(u.getId(), u.getNome(), u.getEmail());

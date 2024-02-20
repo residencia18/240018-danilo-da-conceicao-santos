@@ -1,5 +1,10 @@
-INSERT INTO Piloto(nome, numbreve) VALUES('atchim', '566');		
-INSERT INTO Piloto(nome, numbreve) VALUES('batata', '147');		
-INSERT INTO Piloto(nome, numbreve) VALUES('soneca', '369');		
-INSERT INTO Piloto(nome, numbreve) VALUES('mestre', '896');
+INSERT INTO PILOTO(nome, numbreve) VALUES('atchim', '566');		
+INSERT INTO PILOTO(nome, numbreve) VALUES('batata', '147');		
+INSERT INTO PILOTO(nome, numbreve) VALUES('soneca', '369');		
+INSERT INTO PILOTO(nome, numbreve) VALUES('mestre', '896');
+
+INSERT INTO AEROPORTO(icao, nome) VALUES('ABS', 'Ilheus');
+INSERT INTO AEROPORTO(icao, nome) VALUES('ABC', 'Sao Paulo');
+INSERT INTO AEROPORTO(icao, nome) VALUES('IML', 'Matadouro');
+INSERT INTO AEROPORTO(icao, nome) VALUES('APRiL', 'Rio de Janeiro');
 

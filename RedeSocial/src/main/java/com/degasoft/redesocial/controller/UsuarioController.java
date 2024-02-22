@@ -1,13 +1,20 @@
 package com.degasoft.redesocial.controller;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import com.degasoft.redesocial.controller.Form.UsuarioForm;
 import com.degasoft.redesocial.controller.dto.UsuarioDTO;
 import com.degasoft.redesocial.modelo.Usuario;
 import com.degasoft.redesocial.repository.UsuarioRepository;
@@ -40,12 +47,35 @@ public class UsuarioController {
 		}
 		return listaDTO;
 	}
+//	@PostMapping	
+//	public UsuarioDTO inserirUsuario(@RequestBody UsuarioForm uf) {
+//		Usuario usuario = uf.criarUsuario();
+//		usuarioRepository.save(usuario);
+//		UsuarioDTO uDTO = new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail());
+//		return uDTO;
+//	}
+////////////////////////////////////	
+//	@PostMapping	
+//	public ResponseEntity<UsuarioDTO> inserir(@RequestBody UsuarioForm uf) {
+//		Usuario usuario = uf.criarUsuario();
+//		usuarioRepository.save(usuario);
+//		UsuarioDTO uDTO = new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail());
+//		return new ResponseEntity<>(HttpStatus.CREATED);
+//	}
+	
+	@PostMapping	
+	public ResponseEntity<UsuarioDTO> inserir(@RequestBody UsuarioForm usuarioform ,UriComponentsBuilder uribuilder) {				
+		Usuario usuario = usuarioform.criarUsuario();
+		usuarioRepository.save(usuario);
+		UsuarioDTO uDTO = new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail());
+		uribuilder.path("/usuario/{id}");
+		URI uri = uribuilder.buildAndExpand(usuario.getId()).toUri();
+	
+		return  ResponseEntity.created(uri).body(uDTO);
+	}
 	
 	
-	
-	
-	
-	
+
 	
 	
 	
@@ -65,3 +95,4 @@ public class UsuarioController {
 //	};
 
 }
+

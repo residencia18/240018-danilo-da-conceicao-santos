@@ -7,8 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -74,12 +77,58 @@ public class UsuarioController {
 		return  ResponseEntity.created(uri).body(uDTO);
 	}
 	
+//	@GetMapping("/{id}")
+//	public UsuarioDTO buscaUsuarioId(@PathVariable Long id) {
+//		Usuario usuario = usuarioRepository.getReferenceById(id);
+//		UsuarioDTO uDTO = new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail());
+//		return uDTO;
+//		
+//	}
 	
-
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<UsuarioDTO> listaUsuario(@PathVariable Long id, UriComponentsBuilder uribuilder) {
+		try {
+			Usuario usuario = usuarioRepository.getReferenceById(id);
+			UsuarioDTO uDTO = new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail());
+			uribuilder.path("/usuario/{id}");			
+			return ResponseEntity.ok(uDTO);
+		}catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}		
+	}
 	
+	@PutMapping("/{id}")
+	public ResponseEntity<UsuarioDTO> updateUsuarioId(@PathVariable Long id, @RequestBody UsuarioForm uf) {
+		try {
+			Usuario usuario = usuarioRepository.getReferenceById(id);
+			usuario.setNome(uf.getNome());
+			usuario.setEmail(uf.getEmail());
+			usuario.setSenha(uf.getSenha());
+			usuarioRepository.save(usuario);
+			UsuarioDTO uDTO = new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail());
+			
+			return ResponseEntity.ok(uDTO);
+		}catch (Exception e) {
+			
+			return ResponseEntity.badRequest().build();
+			
+		}
+	}
 	
-	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<UsuarioDTO> deleteUsuarioId(@PathVariable Long id) {
+		try {
+			usuarioRepository.deleteById(id);
+			return ResponseEntity.ok().build();
+		}catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
+}
+	@DeleteMapping("/")
+	public ResponseEntity<UsuarioDTO> deleteUsuario() {
+			return ResponseEntity.badRequest().build();		
+	}
 //	@RequestMapping("/listarUsuarios")
 //	public ArrayList<Usuario> listarUsuarios() {
 //		ArrayList<Usuario> lista = new ArrayList<Usuario>();

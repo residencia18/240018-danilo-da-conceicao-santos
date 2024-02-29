@@ -48,7 +48,7 @@ public class LeilaoController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(leilaoDTOs);
     }
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Leilao> criarLeilao(@RequestBody LeilaoFORM leilaoForm, UriComponentsBuilder uriBuilder) {
         Leilao leilao = leilaoForm.criarLeilao();
         leilaoRepository.save(leilao);
@@ -78,6 +78,6 @@ public class LeilaoController {
     }
     @DeleteMapping("/")
     public ResponseEntity<Void> excluirLeilao() {      
-           return ResponseEntity.notFound().build();    
+    	return ResponseEntity.badRequest().build();
     }
 }

@@ -27,6 +27,7 @@ import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.repository.ConcorrenteRep
 import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.repository.LanceRepository;
 import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.repository.LeilaoRepository;
 
+
 @RestController
 @RequestMapping("/lance")
 public class LanceController {
@@ -84,7 +85,7 @@ public class LanceController {
         }
         
         Lance lance = lanceForm.criarLance();
-        lance.setId(id);
+        lance.setId(id); 
         
         lanceRepository.save(lance);
         
@@ -93,7 +94,7 @@ public class LanceController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> excluirLance(@PathVariable Long id) {
+    public ResponseEntity<?> excluirLanceID(@PathVariable Long id) {
         Optional<Lance> lanceOptional = lanceRepository.findById(id);
 
         if (!lanceOptional.isPresent()) {
@@ -111,6 +112,11 @@ public class LanceController {
 
         return ResponseEntity.ok().build();
     }
+    
+    @DeleteMapping("/")
+	public ResponseEntity<LanceDTO> excluirLance() {
+			return ResponseEntity.badRequest().build();		
+	}
 
     @GetMapping("/vencedor_leilao/{id}")
     public ResponseEntity<?> obterVencedorLeilao(@PathVariable Long id) {

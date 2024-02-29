@@ -83,7 +83,7 @@ public class ConcorrenteController {
     }
     @DeleteMapping("/")
     public ResponseEntity<Void> excluirConcorrente() {      
-           return ResponseEntity.notFound().build();    
+    	return ResponseEntity.badRequest().build();
     }  
 	
 }

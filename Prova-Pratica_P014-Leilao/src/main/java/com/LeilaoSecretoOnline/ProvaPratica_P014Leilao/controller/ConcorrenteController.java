@@ -2,7 +2,6 @@ package com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,8 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.controller.dto.ConcorrenteDTO;
+import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.controller.form.ConcorrenteFORM;
 import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.model.Concorrente;
 import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.repository.ConcorrenteRepository;
 
@@ -53,29 +54,22 @@ public class ConcorrenteController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Void> adicionarConcorrente(@RequestBody ConcorrenteDTO concorrenteDTO) {
-        try {
-            Concorrente concorrente = new Concorrente();
-            concorrente.setNome(concorrenteDTO.getNome());
-            concorrente.setCpf(concorrenteDTO.getCpf());
-            concorrenteRepository.save(concorrente);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<Concorrente> criarConcorrente(@RequestBody ConcorrenteFORM concorrenteForm, UriComponentsBuilder uriBuilder) {
+        Concorrente concorrente = concorrenteForm.criarConcorrente();
+        concorrenteRepository.save(concorrente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(concorrente);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ConcorrenteDTO> atualizarConcorrente(@PathVariable Long id, @RequestBody ConcorrenteDTO concorrenteDTO) {
-        try {
-            Concorrente concorrente = concorrenteRepository.findById(id).orElseThrow();
-            concorrente.setNome(concorrenteDTO.getNome());
-            concorrente.setCpf(concorrenteDTO.getCpf());
-            concorrenteRepository.save(concorrente);
-            return ResponseEntity.ok(new ConcorrenteDTO(concorrente.getId(), concorrente.getNome()));
-        } catch (Exception e) {
+    public ResponseEntity<Concorrente> atualizarConcorrente(@PathVariable Long id, @RequestBody ConcorrenteFORM concorrenteForm) {
+        if (!concorrenteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
+
+        Concorrente concorrente = concorrenteForm.criarConcorrente();
+        concorrente.setId(id);
+        concorrenteRepository.save(concorrente);
+        return ResponseEntity.ok(concorrente);
     }
 
     @DeleteMapping("/{id}")
@@ -87,5 +81,6 @@ public class ConcorrenteController {
             return ResponseEntity.notFound().build();
         }
     }
+    
 	
 }

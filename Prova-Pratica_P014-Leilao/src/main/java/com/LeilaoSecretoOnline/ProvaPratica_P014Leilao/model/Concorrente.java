@@ -8,7 +8,9 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Concorrente {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	 @Column(length = 100)

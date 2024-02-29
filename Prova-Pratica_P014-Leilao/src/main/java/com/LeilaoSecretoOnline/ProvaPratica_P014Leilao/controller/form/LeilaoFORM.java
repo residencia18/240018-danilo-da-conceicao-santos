@@ -58,6 +58,7 @@ public class LeilaoFORM {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
+	
 
 	@Override
 	public String toString() {

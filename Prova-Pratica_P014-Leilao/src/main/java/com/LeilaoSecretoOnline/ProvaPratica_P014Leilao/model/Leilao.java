@@ -7,7 +7,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Leilao {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
 	private double valorminimo;
@@ -68,6 +69,9 @@ public class Leilao {
 	public String toString() {
 		return "Leilao [id=" + id + ", descricao=" + descricao + ", valorminimo=" + valorminimo + ", status=" + status
 				+ "]";
+	}
+	public boolean isStatusAtivo() {
+		return this.status;
 	}
 	
 }

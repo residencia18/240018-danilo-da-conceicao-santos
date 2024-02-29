@@ -73,7 +73,7 @@ public class ConcorrenteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirConcorrente(@PathVariable Long id) {
+    public ResponseEntity<Void> excluirConcorrenteId(@PathVariable Long id) {
         try {
             concorrenteRepository.deleteById(id);
             return ResponseEntity.ok().build();
@@ -81,6 +81,9 @@ public class ConcorrenteController {
             return ResponseEntity.notFound().build();
         }
     }
-    
+    @DeleteMapping("/")
+    public ResponseEntity<Void> excluirConcorrente() {      
+           return ResponseEntity.notFound().build();    
+    }  
 	
 }

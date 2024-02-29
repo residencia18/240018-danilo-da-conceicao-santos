@@ -162,7 +162,8 @@ public class LanceController {
                 continue;
             }
 
-            Optional<Lance> optionalMaiorLance = lanceRepository.findByLeilaoOrderByValorDesc(leilao);
+            Optional<Lance> optionalMaiorLance = lanceRepository.findMaxLanceByLeilao(leilao.getId());
+
             if (optionalMaiorLance.isEmpty()) {
                 continue;
             }

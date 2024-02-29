@@ -10,9 +10,6 @@ import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.model.Lance;
 import com.LeilaoSecretoOnline.ProvaPratica_P014Leilao.model.Leilao;
 
 public interface LanceRepository extends JpaRepository<Lance, Long> {
-	@Query("SELECT l FROM Lance l WHERE l.leilao.id = :leilaoId AND l.valor = (SELECT MAX(l2.valor) FROM Lance l2 WHERE l2.leilao.id = :leilaoId)")
+	@Query("SELECT l FROM Lance l WHERE l.leilao = :leilao ORDER BY l.valor DESC")
 	Optional<Lance> findByLeilaoOrderByValorDesc(@Param("leilao") Leilao  leilao );
-	
-	
-	
 }

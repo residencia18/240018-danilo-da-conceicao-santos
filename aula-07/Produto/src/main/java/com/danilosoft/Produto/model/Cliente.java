@@ -4,33 +4,29 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-public class Usuario {
-	
+public class Cliente {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotNull(message = "O nome nao pode ser nulo") 
 	private String nome;
+	private String Endereco;
+	private String numero;
+	private String celular;
+	private String cidae;
+	private String bairro;
+	private String cpf;
+	private String mais_informacao;
 	
-	@Email(message = "O Email nao eh valido")
-	private String email;
-	
-	private String senha;
-	
-	
-	
-	
-	
-	
+	@ManyToOne
+	@JoinColumn(name="id_usuario")
+	private Usuario usuario;
 }

@@ -21,7 +21,7 @@ public class Cliente {
 	private String Endereco;
 	private String numero;
 	private String celular;
-	private String cidae;
+	private String cidade;
 	private String bairro;
 	private String cpf;
 	private String mais_informacao;

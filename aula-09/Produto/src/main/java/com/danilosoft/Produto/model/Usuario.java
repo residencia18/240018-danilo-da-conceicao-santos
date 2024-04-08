@@ -23,7 +23,7 @@ public class Usuario {
 	@NotNull(message = "O nome nao pode ser nulo") 
 	private String nome;
 	
-	@Email(message = "O Email nao eh valido")
+	@Email(message = "O Email não é válido")
 	private String email;
 	
 	private String senha;

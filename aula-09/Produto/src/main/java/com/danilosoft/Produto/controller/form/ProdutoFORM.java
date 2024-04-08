@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ProdutoFORM {
-	private long id;
+	private Long id;
 	private String descricao;
 	private double precoCusto;
 	private double precoVista;

@@ -70,7 +70,31 @@
 		    <artifactId>javafaker</artifactId>
 		    <version>1.0.2</version>
 		</dependency>
-				
+		
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-slf4j-impl</artifactId>
+		    <version>2.14.1</version>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>org.apache.logging.log4j</groupId>
+		            <artifactId>log4j-to-slf4j</artifactId>
+		        </exclusion>
+		    </exclusions>
+		</dependency>
+
+		 <dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>8.0.1.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+			
 	</dependencies>
 
 	<build>

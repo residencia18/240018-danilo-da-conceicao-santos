@@ -13,6 +13,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,10 +31,16 @@ public class User  implements Serializable{
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotNull(message = "O nome nao pode ser nulo") 
 	private String name;
+	
+	@Email(message = "O Email não é válido")
 	private String email;
+	
 	private String phone;
 	private String password;
+	
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")

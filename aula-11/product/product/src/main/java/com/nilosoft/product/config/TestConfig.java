@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.github.javafaker.Faker;
 import com.nilosoft.product.model.Category;
 import com.nilosoft.product.model.Order;
 import com.nilosoft.product.model.Product;
@@ -35,9 +36,10 @@ public class TestConfig implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		User u1 = new User(null, "Maria Brown", "maria@.com", "988888888", "988888888");
-		User u2 = new User(null, "Alex Green", "alex@.com", "977777777", "977777777");
-		User u3 = new User(null, "Bob Brown", "bob@.com", "966666666", "966666666");
+		Faker faker = new Faker();
+		User u1 = new User(null, faker.name().fullName(), faker.internet().emailAddress(), faker.phoneNumber().cellPhone(), faker.internet().password());
+		User u2 = new User(null, "faker.name().fullName()", faker.internet().emailAddress(), faker.phoneNumber().cellPhone(), faker.internet().password());
+		User u3 = new User(null, "faker.name().fullName()", faker.internet().emailAddress(),faker.phoneNumber().cellPhone(), faker.internet().password());
 		userRepository.saveAll(Arrays.asList(u1, u2, u3));
 		
 		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"),OrderStatus.PAID, u1); 

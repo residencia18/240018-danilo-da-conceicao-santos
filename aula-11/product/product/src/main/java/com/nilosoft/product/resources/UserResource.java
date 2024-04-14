@@ -41,14 +41,12 @@ public class UserResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> create(@RequestBody User user) {
-	    // Adicione aqui a validação do usuário antes de criar
 	    User createdUser = service.save(user);
 	    return ResponseEntity.ok().body(createdUser);
 	}
 
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
-	    // Adicione aqui a validação do usuário antes de atualizar
 	    User updatedUser = service.update(id, user);
 	    return ResponseEntity.ok().body(updatedUser);
 	}

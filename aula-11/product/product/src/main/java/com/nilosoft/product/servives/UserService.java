@@ -33,9 +33,6 @@ public class UserService {
 
 	@Transactional
 	public void delete(Long id){
-	    if (!repository.existsById(id)) {
-	        throw new NoSuchElementException("Usuário com id " + id + " não encontrado");
-	    }
 	    repository.deleteById(id);
 	}
 

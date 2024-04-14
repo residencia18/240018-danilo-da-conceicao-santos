@@ -18,7 +18,7 @@ import org.springframework.http.ResponseEntity;
 import com.nilosoft.product.model.Product;
 import com.nilosoft.product.servives.ProductServiceV1;
 
-class ProductResourceTest {
+class ProductResourceTestV1 {
 
     @Mock
     private ProductServiceV1 productService;

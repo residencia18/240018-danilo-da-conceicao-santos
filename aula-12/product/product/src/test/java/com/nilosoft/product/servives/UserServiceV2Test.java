@@ -15,7 +15,7 @@ import com.github.javafaker.Faker;
 import com.nilosoft.product.model.User;
 import com.nilosoft.product.repository.UserRepository;
 
-class UserServiceTestV2 {
+class UserServiceV2Test {
 
     @InjectMocks
     UserServiceV1 userService;

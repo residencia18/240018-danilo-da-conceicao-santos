@@ -71,11 +71,6 @@ public class UserResourceV1 {
 		User user = service.findById(id);
 		return ResponseEntity.ok().body(user);
 	}
-	@GetMapping(value = "/{name}")
-	public ResponseEntity<Page<User>> findAllByNameContains(@PathVariable String name,Pageable pageable) {
-		Page <User> user = service.findByName(pageable, name);
-		return ResponseEntity.ok().body(user);
-	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)

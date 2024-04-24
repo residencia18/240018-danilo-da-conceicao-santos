@@ -22,9 +22,7 @@ public class UserServiceV1 {
 	@ Autowired
 	private UserRepository repository;
 	
-	public UserServiceV1 (UserRepository repository) {
-		this.repository = repository;
-	}
+	
 	
 	 public List<User> findAllSorted(String[] sort) {
 	        List<Order> orders = new ArrayList<>();
@@ -59,11 +57,6 @@ public class UserServiceV1 {
 	public User findById(Long id){
 		Optional<User> obj = repository.findById(id);
 		return obj.get();
-	}
-	
-	public Page<User> findByName(Pageable pageable,String name){
-		Page<User> obj = repository.findByName( pageable, name);
-		return obj;
 	}
 	
 	@Transactional

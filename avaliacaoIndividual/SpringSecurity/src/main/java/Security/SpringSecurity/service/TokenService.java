@@ -24,4 +24,9 @@ public class TokenService {
     public void invalidarToken(String token) {
         tokens.remove(token);
     }
+
+	public String getEmailByToken(String token) {
+		return tokens.get(token);
+
+	}
 }

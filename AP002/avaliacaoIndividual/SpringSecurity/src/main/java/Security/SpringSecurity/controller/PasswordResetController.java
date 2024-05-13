@@ -22,9 +22,9 @@ public class PasswordResetController {
     @PostMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestParam String token, @RequestBody NewPasswordRequest newPassword) {
         if (changePasswordService.changePassword(token, newPassword)) { 
-            return ResponseEntity.status(HttpStatus.OK).body("Password updated with success!");
+            return ResponseEntity.status(HttpStatus.OK).body("Senha atualizada com sucesso!");
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid token.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Token invalido.");
         }
     }
 }

@@ -1,0 +1,16 @@
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(15) UNIQUE NOT NULL,
+    password VARCHAR(255)
+)
+
+

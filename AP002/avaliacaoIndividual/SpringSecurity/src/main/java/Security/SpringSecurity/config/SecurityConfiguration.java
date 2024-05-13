@@ -42,7 +42,8 @@ public class SecurityConfiguration {
 	                .csrf(csrf -> csrf.disable())
 	                .authorizeHttpRequests(authorize -> authorize
 	                        .requestMatchers("/api/auth/**").permitAll()
-	                        
+	                        .requestMatchers("/api/recover-password").permitAll() // permiçao para todos os usuarios
+	                        .requestMatchers("/swagger-ui/", "/v3/api-docs/", "/swagger-ui.html").permitAll()// // Permitir acesso ao Swagger UI e à documentação da API
 	                        .anyRequest().authenticated())
 	                .oauth2ResourceServer(oAuth2ResourceServerConfigurer
 	                        -> oAuth2ResourceServerConfigurer.jwt(Customizer.withDefaults()))

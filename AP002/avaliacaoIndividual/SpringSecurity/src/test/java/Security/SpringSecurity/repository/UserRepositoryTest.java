@@ -1,52 +1,52 @@
 package Security.SpringSecurity.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import Security.SpringSecurity.entity.User;
 
-@DataJpaTest
 class UserRepositoryTest {
 
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-    @Test
-    void testFindById() {
-        // Criar um usuário de exemplo
-        User user = new User();
-        user.setEmail("test@example.com");
-        user.setUsername("test_user");
-        
-        // Salvar o usuário no banco de dados
-        userRepository.save(user);
-        
-        // Buscar o usuário pelo ID
-        Optional<User> foundUserOptional = userRepository.findById(user.getId());
-        
-        // Verificar se o usuário foi encontrado corretamente
-        assertEquals(user, foundUserOptional.orElse(null));
-    }
+  @Test
+  public void testFindByEmail_shouldFindUser_whenEmailExists() {
+    // Cenário: Criar um usuário com email válido e salvá-lo no banco
+    String testEmail = "teste@email.com";
+    User user = User.builder()
+      .email(testEmail)
+      .username("teste_user")
+      // ... outras propriedades do usuário
+      .build();
+    userRepository.save(user);
 
-    @Test
-    void testFindByEmail() {
-        // Criar um usuário de exemplo
-        User user = new User();
-        user.setEmail("test@example.com");
-        user.setUsername("test_user");
-        
-        // Salvar o usuário no banco de dados
-        userRepository.save(user);
-        
-        // Buscar o usuário pelo email
-        Optional<User> foundUserOptional = userRepository.findByEmail(user.getEmail());
-        
-        // Verificar se o usuário foi encontrado corretamente
-        assertEquals(user, foundUserOptional.orElse(null));
-    }
+    // Ação: Buscar usuário pelo email cadastrado
+    Optional<User> foundUser = userRepository.findByEmail(testEmail);
+
+    // Asserção: Verificar se o usuário foi encontrado
+    assertTrue(foundUser.isPresent());
+    assertEquals(testEmail, foundUser.get().getEmail());
+
+    // Limpeza (opcional): Remover o usuário de teste do banco
+    userRepository.deleteById(user.getId());
+  }
+
+  @Test
+  public void testFindByEmail_shouldReturnEmptyOptional_whenEmailNotFound() {
+    // Cenário: Nenhum usuário com o email de teste existe no banco
+
+    // Ação: Buscar usuário por um email que não existe
+    String nonExistingEmail = "nao_cadastrado@email.com";
+    Optional<User> foundUser = userRepository.findByEmail(nonExistingEmail);
+
+    // Asserção: Verificar se nenhum usuário foi encontrado
+    assertFalse(foundUser.isPresent());
+  }
 }
